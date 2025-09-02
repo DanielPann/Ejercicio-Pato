@@ -4,29 +4,28 @@
 
 package main;
 
-import duck.*;
+import duck.DecoyDuck;
+import duck.Duck;
 import flybehavior.FlyRocketPowered;
 
 public class Main {
     public static void main(String[] args) {
-        Duck mallard = new MallardDuck();
-        mallard.display();
-        mallard.performQuack();
-        mallard.performFly();
+        Duck decoy = new DecoyDuck();
+
+        System.out.println("Comportamiento original:");
+        decoy.display();
+        decoy.performFly();   
+        decoy.performQuack(); 
 
         System.out.println("----");
 
-        Duck rocketDuck = new RocketDuck();
-        rocketDuck.display();
-        rocketDuck.performQuack();
-        rocketDuck.performFly();
+       
+        System.out.println("DecoyDuck recibe un rocket upgrade!");
+        decoy.setFlyBehavior(new FlyRocketPowered());
 
-        System.out.println("----");
-
-        // Cambiar comportamiento en tiempo de ejecución
-        System.out.println("Mallard gets a rocket upgrade!");
-        mallard.setFlyBehavior(new FlyRocketPowered());
-        mallard.performFly();
+        System.out.println("Nuevo comportamiento:");
+        decoy.performFly();   
     }
 }
+
 
